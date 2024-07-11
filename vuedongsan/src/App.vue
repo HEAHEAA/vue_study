@@ -1,11 +1,15 @@
 <template>
+
   <!-- 모달창 -->
-  <Modal
-      :oneRoom="oneRoom"
-      :modal="modal"
-      :modalStatus="modalStatus"
-      @closeModal="modal = false;"
-  />
+  <transition name="fade">
+    <Modal
+        :oneRoom="oneRoom"
+        :modal="modal"
+        :modalStatus="modalStatus"
+        @closeModal="modal = false;"
+    />
+  </transition>
+
 
   <!-- 메뉴 -->
   <div class="menu">
@@ -80,6 +84,31 @@ div {
   background: white;
   border-radius: 8px;
   padding: 20px;
+}
+
+/* fade는 class 명임*/
+.fade-enter-from{
+  opacity: 0;
+  transform: translateY(-1000px);
+}
+.fade-enter-active{
+  transition: all .5s;
+}
+.fade-enter-to{
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+
+.fade-leave-from{
+  opacity: 1;
+
+}
+.fade-leave-active{
+  transition: all .5s;
+}
+.fade-leave-to{
+  opacity: 0;
 }
 
 </style>
