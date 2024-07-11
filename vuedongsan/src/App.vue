@@ -1,35 +1,54 @@
-<template>
 
+
+<template>
+  <!-- 모달창 -->
+  <div class="black-bg" v-if="modal === true">
+    <div class="white-bg" v-if="modalStatus === 2">
+      <h4>메롱</h4>
+      <button @click="modal = false">닫기</button>
+    </div>
+    <div class="white-bg" v-else>
+      <h4>{{oneRoom[modalStatus].title}}</h4>
+      <p>{{oneRoom[modalStatus].content}}</p>
+      <button @click="modal = false">닫기</button>
+    </div>
+  </div>
+
+  <!-- 메뉴 -->
   <div class="menu">
     <a v-for="item in menu" :key="item">{{item}}</a>
   </div>
 
-  <img alt="Vue logo" src="./assets/logo.png">
-
-  <div v-for="(products,i) in product" :key="i">
-    <h4>{{products}}</h4>
-    <p>XX 만원</p>
+  <!-- 콘텐츠 -->
+  <div v-for="(or,i) in oneRoom" :key="i">
+    <img :src="or.image" alt="image" @click="modal = true; modalStatus=i"/>
+    <h4>{{or.title}}</h4>
+    <p>{{or.content}}</p>
     <button @click="increase(i)">허위매물신고</button>
-    <span>신고 수: {{신고수[i]}}</span>
+    <span>신고 수: {{report[i]}}</span>
     <hr/>
   </div>
-
 </template>
 
 <script>
+import data from '../src/components/OneRoom';
 
+console.log(data);
 export default {
   name: 'App',
   data() {
     return {
-      신고수 : [0,0,0],
+      report : [0,0,0],
       menu: ['Home', 'Shop', 'About'],
-      product: ['역삼동원룸', '천호동원룸', '마포구원룸']
+      product: ['역삼동원룸', '천호동원룸', '마포구원룸'],
+      modal: false,
+      modalStatus: 0,
+      oneRoom: data,
     }
   },
   methods: {
-    increase(arr) {
-      this.신고수[arr] += 1;
+    increase(array) {
+      this.report[array] += 1;
     },
 
   }
@@ -46,6 +65,23 @@ export default {
 .menu a {
   color: white;
   padding: 10px;
+}
+
+body {
+  margin : 0;
+}
+div {
+  box-sizing: border-box;
+}
+.black-bg {
+  width: 100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  position: fixed; padding: 20px;
+}
+.white-bg {
+  width: 100%; background: white;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 </style>
