@@ -1,4 +1,5 @@
-const oneRoom =[{
+const oneRoom =[
+    {
     id : 0,
     title: "Sinrim station 30 meters away",
     image: "https://codingapple1.github.io/vue/room0.jpg",

@@ -4,23 +4,24 @@
       :oneRoom="oneRoom"
       :modal="modal"
       :modalStatus="modalStatus"
+      @closeModal="modal = false;"
   />
 
   <!-- 메뉴 -->
   <div class="menu">
-    <a v-for="item in menu" :key="item">{{item}}</a>
+    <a v-for="item in menu" :key="item">{{ item }}</a>
   </div>
   <DiscountComponent/>
 
   <!-- 콘텐츠 -->
- <Card
-     :oneRoom="oneRoom"
-     :modal="modal"
-     :modalStatus="modalStatus"
-     :report="report"
-     :increase="increase"
-     안녕="안녕!"
- />
+<Card
+    @openModal="modal = true; modalStatus=oneRooms.id"
+
+    v-for="(oneRooms,i) in oneRoom"
+    :key="oneRooms"
+    :oneRooms="oneRoom[i]"
+/>
+
 </template>
 
 <script>
@@ -33,7 +34,7 @@ export default {
   name: 'App',
   data() {
     return {
-      report : [0,0,0],
+      report: [0, 0, 0],
       menu: ['Home', 'Shop', 'About'],
       product: ['역삼동원룸', '천호동원룸', '마포구원룸'],
       modal: false,
@@ -49,7 +50,7 @@ export default {
   },
 
   components: {
-    Card,
+    Card : Card,
     DiscountComponent: DiscountComponent,
     Modal: Modal,
   }
@@ -69,13 +70,14 @@ export default {
 }
 
 body {
-  margin : 0;
+  margin: 0;
 }
+
 div {
   box-sizing: border-box;
 }
 
-.white-bg image{
+.white-bg image {
   background: white;
   border-radius: 8px;
   padding: 20px;
