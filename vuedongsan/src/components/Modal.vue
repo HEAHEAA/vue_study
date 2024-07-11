@@ -36,7 +36,6 @@ export default {
     }
   },
   watch: {
-
     month(valueType){
       if(valueType >= 13){
         alert('숫자가 12 이상임');
@@ -45,13 +44,21 @@ export default {
         this.month = 1;
       }
     },
-
   },
   props: {
     oneRoom: Object,
     modal: Boolean,
     modalStatus: Number,
-  }
+  },
+  beforeUpdate() {
+    if(this.month === 2){
+      alert('2개월은 적다');
+      this.month = 3;
+    }
+  },
+
+
+
 }
 
 
