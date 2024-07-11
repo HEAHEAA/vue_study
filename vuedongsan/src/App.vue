@@ -16,7 +16,6 @@
   <!-- 콘텐츠 -->
 <Card
     @openModal="modal = true; modalStatus=oneRooms.id"
-
     v-for="(oneRooms,i) in oneRoom"
     :key="oneRooms"
     :oneRooms="oneRoom[i]"
