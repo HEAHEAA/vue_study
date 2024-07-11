@@ -1,39 +1,34 @@
-
-
 <template>
   <!-- 모달창 -->
-  <div class="black-bg" v-if="modal === true">
-    <div class="white-bg" v-if="modalStatus === 2">
-      <h4>메롱</h4>
-      <button @click="modal = false">닫기</button>
-    </div>
-    <div class="white-bg" v-else>
-      <h4>{{oneRoom[modalStatus].title}}</h4>
-      <p>{{oneRoom[modalStatus].content}}</p>
-      <button @click="modal = false">닫기</button>
-    </div>
-  </div>
+  <Modal
+      :oneRoom="oneRoom"
+      :modal="modal"
+      :modalStatus="modalStatus"
+  />
 
   <!-- 메뉴 -->
   <div class="menu">
     <a v-for="item in menu" :key="item">{{item}}</a>
   </div>
+  <DiscountComponent/>
 
   <!-- 콘텐츠 -->
-  <div v-for="(or,i) in oneRoom" :key="i">
-    <img :src="or.image" alt="image" @click="modal = true; modalStatus=i"/>
-    <h4>{{or.title}}</h4>
-    <p>{{or.content}}</p>
-    <button @click="increase(i)">허위매물신고</button>
-    <span>신고 수: {{report[i]}}</span>
-    <hr/>
-  </div>
+ <Card
+     :oneRoom="oneRoom"
+     :modal="modal"
+     :modalStatus="modalStatus"
+     :report="report"
+     :increase="increase"
+     안녕="안녕!"
+ />
 </template>
 
 <script>
 import data from '../src/components/OneRoom';
+import DiscountComponent from "@/components/DiscountComponent.vue";
+import Modal from '@/components/Modal.vue';
+import Card from '@/components/Card.vue';
 
-console.log(data);
 export default {
   name: 'App',
   data() {
@@ -46,11 +41,17 @@ export default {
       oneRoom: data,
     }
   },
+
   methods: {
     increase(array) {
       this.report[array] += 1;
     },
+  },
 
+  components: {
+    Card,
+    DiscountComponent: DiscountComponent,
+    Modal: Modal,
   }
 }
 </script>
@@ -73,13 +74,9 @@ body {
 div {
   box-sizing: border-box;
 }
-.black-bg {
-  width: 100%; height:100%;
-  background: rgba(0,0,0,0.5);
-  position: fixed; padding: 20px;
-}
-.white-bg {
-  width: 100%; background: white;
+
+.white-bg image{
+  background: white;
   border-radius: 8px;
   padding: 20px;
 }
