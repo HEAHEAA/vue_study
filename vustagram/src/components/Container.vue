@@ -9,11 +9,11 @@
       <div class="upload-image" :style="{backgroundImage: `url(${ContainerImage})`}"></div>
 
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <FilterBox
+            :ContainerImage="ContainerImage"
+            v-for="filter in filters" :key="filter"
+            :filter="filter"
+        ></FilterBox>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
     <div v-if="step === 2">
       <div class="upload-image" :style="{backgroundImage: `url(${ContainerImage})`}"></div>
       <div class="write">
-        <textarea  class="write-box" @input="$emit('write', $event.target.value)"/>
+        <textarea class="write-box" @input="$emit('write', $event.target.value)"/>
       </div>
     </div>
 
@@ -30,28 +30,27 @@
 </template>
 
 <script>
-import Post from './Post.vue'
+import Post from './Post.vue';
+import FilterBox from './FilterBox.vue';
 
 export default {
   name: 'Container',
-  components: {
-    Post: Post
-  },
-  data(){
-    return{
-
+  data() {
+    return {
+      filters: ["aden", "_1977", "brannan", "brooklyn", "clarendon", "earlybird", "gingham", "hudson",
+        "inkwell", "kelvin", "lark", "lofi", "maven", "mayfair", "moon", "nashville", "perpetua",
+        "reyes", "rise", "slumber", "stinson", "toaster", "valencia", "walden", "willow", "xpro2"],
     }
   },
-  props : {
+  components: {
+    Post: Post,
+    FilterBox: FilterBox
+  },
+  props: {
     Data: Array,
     step: Number,
     ContainerImage: String,
   },
-  methods: {
-
-
-  }
-
 }
 </script>
 
