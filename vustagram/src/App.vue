@@ -5,6 +5,7 @@
     </ul>
 
 
+
     <ul class="header-button-right" v-if="step === 0 || step === 1">
       <li @click="step = 2">Next</li>
     </ul>
@@ -15,6 +16,12 @@
 
     <img src="./assets/logo.png" class="logo" alt="images"/>
   </div>
+
+  <h4>{{$store.state.name}}</h4>
+  <button @click="$store.commit('onchangeName')">버튼</button>
+
+  <h4>{{$store.state.age}}</h4>
+  <button @click="$store.commit('onchangeName')">버튼</button>
 
   <Container
       :Data="Data"
