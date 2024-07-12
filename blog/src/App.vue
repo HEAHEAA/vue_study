@@ -1,5 +1,4 @@
 <template>
-<!--  <button type="button" class="btn btn-primary">Primary</button>-->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Navbar</a>
@@ -17,19 +16,17 @@
     </div>
   </nav>
 
-  <div>
-    <h5>React 개발자의 블로그 입니다.</h5>
-    <p>- Vue -</p>
-  </div>
 
-  <List
-    :blogs="blogs"
-  />
+  <router-link to="/list">리스트 페이지</router-link>
+  <router-view
+      :blogs="blogs"
+  >
+  </router-view>
 
 </template>
 
+
 <script>
-import List from '@/components/List.vue';
 import blog from './mock/Data';
 
 export default {
@@ -38,9 +35,6 @@ export default {
     return{
       blogs : blog,
     }
-  },
-  components: {
-    List : List,
   }
 }
 </script>

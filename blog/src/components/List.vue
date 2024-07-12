@@ -1,6 +1,5 @@
 <template>
   <hr/>
-
   <div v-for="blogs in blogs" :key="blogs">
     <h5>{{blogs.title}}</h5>
     <p>{{ blogs.date }}</p>
