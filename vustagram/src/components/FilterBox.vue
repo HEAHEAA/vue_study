@@ -1,13 +1,22 @@
 <template>
-  <div :class="`${filter} filter-item`"  :style="`background-image: url(${ContainerImage})`"></div>
+  <div :class="`${filter} filter-item`"  :style="`background-image: url(${ContainerImage})`" @click="choiFilter(filter)">
+    <slot name="a"></slot>
+<!--    {{filter}}-->
+  </div>
 </template>
 <script>
 
 export default {
   name: 'filterBox',
+  methods: {
+    choiFilter(value){
+      this.emitter.emit('choiFilter', value);
+    }
+
+  },
   props: {
     ContainerImage: String,
-    filter: String
+    filter: String,
   },
 }
 </script>

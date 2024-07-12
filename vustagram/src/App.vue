@@ -21,6 +21,7 @@
       :step="step"
       :ContainerImage="containerImage"
       @write="content=$event"
+      :picFilter="picFilter"
   />
 
   <div v-if="step===0">
@@ -53,6 +54,7 @@ export default {
       containerImage: '',
       content: '',
       Data: Data,
+      picFilter: ''
     }
   },
   components: {
@@ -68,7 +70,7 @@ export default {
         date: "May 15",
         liked: false,
         content: this.content,
-        filter: "perpetua"
+        filter: this.picFilter
       };
       this.Data.unshift(board);
       this.step = 0;
@@ -86,8 +88,13 @@ export default {
      this.containerImage = URL.createObjectURL(myFile[0]);
      this.step ++;
     }
-
   },
+  mounted() {
+    this.emitter.on('choiFilter', (a) => {
+      this.picFilter = a;
+      console.log('필터시작', a);
+    });
+  }
 
 }
 </script>
