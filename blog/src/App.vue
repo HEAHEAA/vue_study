@@ -7,21 +7,22 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link" href="/list">List</a>
           <a class="nav-link" href="#">Pricing</a>
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </div>
       </div>
     </div>
   </nav>
 
-
+  <router-link to="/">홈페이지</router-link>
+  <br/>
   <router-link to="/list">리스트 페이지</router-link>
-  <router-view
-      :blogs="blogs"
-  >
-  </router-view>
+
+  <div class="mt-4">
+    <router-view :blogs="blogs"></router-view>
+  </div>
+
 
 </template>
 

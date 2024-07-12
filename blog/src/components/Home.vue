@@ -6,9 +6,13 @@
 </template>
 
 <script>
-
+export default {
+  name: 'Home',
+  props: {
+    blogs: Array,
+  }
+}
 </script>
 
 <style>
-
 </style>
