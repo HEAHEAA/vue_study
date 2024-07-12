@@ -17,11 +17,11 @@
     <img src="./assets/logo.png" class="logo" alt="images"/>
   </div>
 
-  <h4>{{$store.state.name}}</h4>
-  <button @click="$store.commit('onchangeName')">버튼</button>
 
-  <h4>{{$store.state.age}}</h4>
-  <button @click="$store.commit('onchangeName')">버튼</button>
+  <!-- store 사용방법 -->
+<!--  <h4>{{$store.state.name}} {{$store.state.age}}</h4>-->
+<!--  <button @click="$store.commit('onchangeName')">버튼</button>-->
+<!--  <button @click="$store.commit('onchangeAge',10)">나이증가</button>-->
 
   <Container
       :Data="Data"

@@ -4,11 +4,21 @@
       <div class="profile"></div>
       <span class="profile-name">{{Data.name}}</span>
     </div>
-    <div :class="`${Data.filter} post-body`" :style="{backgroundImage: `url(${Data.postImage})`}">
+    <div :class="`${Data.filter} post-body`" :style="{backgroundImage: `url(${Data.postImage})`}"
+      @click="$store.commit('onchangeLikes', 1)"
+    >
 
     </div>
     <div class="post-content">
-      <p>{{Data.likes}} Likes</p>
+      <p>
+<!--        {{Data.likes}} -->
+        {{$store.state.likes}}
+        Likes {{$store.state.check === false ? '♡' : `♥`}}
+
+      </p>
+      <small>
+        {{$store.state.check === false ? '' : `${Data.name}회원님이 좋아요를 눌렀습니다.`}}
+      </small>
       <p><strong>{{Data.name}}</strong> {{Data.content}}</p>
       <p class="date">{{Data.date}}</p>
     </div>

@@ -3,7 +3,7 @@ export default[
         name: "Kim Hyun",
         userImage: "https://picsum.photos/100?random=3",
         postImage: "https://picsum.photos/600?random=3",
-        likes: 36,
+        likes: 20,
         date: "May 15",
         liked: false,
         content: "오늘 무엇을 했냐면요 아무것도 안했어요 ?",

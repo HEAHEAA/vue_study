@@ -263,3 +263,157 @@ export default {
 ```
 
 * * *
+
+## solt 사용방법
+#### - 부모컴포넌트로부터 props를 사용하지 않고 작성하려면
+#### - 자식컴포넌트에서 뚫어놓고자 하는 html 부분에 <slot></slot> 를 적어준다.
+#### - 만일 slot을 여러개 작성하고싶다면, <slot name="이름"></slot>을 작성해준다.
+```
+[vustagram/Filter.vue]
+ 
+<template>
+  <div class="filter-item">
+    <slot name="a"></slot>
+  </div>
+</template>
+----------------------------------------------------------
+ [vustagram/Container.vue]
+ 
+ <template>
+    <template v-slot:a>{{filter}}</template> //넣고자 하는 곳에 템플릿과 v-slot에 정해놓은 name값 넣기
+ </template>
+
+```
+
+
+* * *
+
+## mitt 라이브러리 사용방법
+
+#### 설치방법
+```
+$ npm install mitt //npm
+$ yarn add mitt // yarn
+```
+
+#### mitt 기본세팅
+```
+[main.js]
+
+import { createApp } from 'vue'
+import App from './App.vue'
+
+import mitt from 'mitt'
+let emitter = mitt();
+let app = createApp(App);
+app.config.globalProperties.emitter = emitter;
+
+app.mount('#app') 
+```
+
+#### mitt 사용방법
+```
+[vuestagram/FilterBox.vue]
+
+<template>
+  <div @click="choiFilter(filter)">
+    <slot name="a"></slot>
+  </div>
+</template>
+
+<script>
+    methods: {
+        fun(value){
+            this.emitter.emit('이벤트명', value);
+        }
+    }
+</script>
+
+----------------------------------------------------------
+[vuestagram/App.vue]
+    //이렇게 하면 a emitter가 선언된 값에 맞게 들어온다.
+    
+  mounted: {
+     this.emitter.on('choiFilter', (a) => {
+      this.picFilter = a;
+      console.log('필터시작', a);
+    });
+ }
+
+```
+
+* * *
+
+## Vuex 사용방법
+#### props 와 custom event 로 사용하게 될시, 데이터를 주고받는 코드도 많아지고, 불편한점이 여럿생긴다.
+#### 해당 문제점을 개선하기위해 한 곳에 데이터를 넣어서 다른 컴포넌트들도 사용할 수 있게끔 만들어놓은 라이브러리
+
+```
+[store.js 생성]
+
+import { createStore } from 'vuex'
+
+const store = createStore({
+  state(){
+    return {
+      
+    }
+  },
+})
+
+export default store
+----------------------------------------------------------
+[main.js]
+import store from './store.js'
+
+app.use(store).mount('#app')
+```
+####  vue파일에서 {{ $store.state.데이터명 }} 선언 시, 해당 state 값을 가져올 수 있다.
+
+### state 변수상태 관리 하는 방법
+```
+[store.js]
+
+const store = createStore({
+  state () {
+    return {
+      name : 'kim',
+      age : 20,
+    }
+  },
+  mutations :{
+    ageOnChange(state){ // age값이 +1 되게끔 선언
+      state.age++
+    }
+  },
+}
+
+----------------------------------------------------------
+[App.vue]
+
+<button @click="$store.commit('ageOnChange')">버튼</button>
+
+```
+
+
+#### payload 로 추가 값 변경하기
+```
+[store.js]
+const store = createStore({
+  state () {
+    return {
+      name : 'kim',
+      age : 20,
+    }
+  },
+  mutations :{
+    ageOnChange(state, payload){ 
+      state.age+= payload
+    }
+  },
+}
+
+----------------------------------------------------------
+[App.vue]
+<button @click="$store.commit('ageOnChange',10)">버튼</button>
+```
