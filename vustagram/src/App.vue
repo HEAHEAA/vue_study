@@ -20,7 +20,7 @@
       :Data="Data"
       :step="step"
       :ContainerImage="containerImage"
-      :textOnchange="textOnchange"
+      @write="content=$event"
   />
 
   <div v-if="step===0">
@@ -72,9 +72,6 @@ export default {
       };
       this.Data.unshift(board);
       this.step = 0;
-    },
-    textOnchange(e){
-      this.content = e.target.value;
     },
     more(){
       axios.get(`https://codingapple1.github.io/vue/more${this.item}.json`)

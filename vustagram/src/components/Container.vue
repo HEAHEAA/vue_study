@@ -22,10 +22,9 @@
     <div v-if="step === 2">
       <div class="upload-image" :style="{backgroundImage: `url(${ContainerImage})`}"></div>
       <div class="write">
-        <textarea  class="write-box" @change="textOnchange" />
+        <textarea  class="write-box" @input="$emit('write', $event.target.value)"/>
       </div>
     </div>
-
 
   </div>
 </template>
@@ -47,7 +46,6 @@ export default {
     Data: Array,
     step: Number,
     ContainerImage: String,
-    textOnchange: Function,
   },
   methods: {
 
