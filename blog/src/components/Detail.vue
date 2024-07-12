@@ -1,8 +1,13 @@
 <template>
   <div>
-    <h4>상세페이지</h4>
-    <h5>글제목</h5>
-    <p>글 설명</p>
+    <h4>Deyail</h4>
+    <h5>{{blogs[$route.params.id].title}}</h5>
+    <p>{{blogs[$route.params.id].content}}</p>
+    <button @click="$router.go(-1)">
+      뒤로가기
+    </button>
+
+    <router-view />
   </div>
 </template>
 
@@ -11,9 +16,10 @@
 export default {
   name: 'Detail',
   data(){
-    return{
 
-    }
+  },
+  props: {
+    blogs: Array,
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div v-for="blogs in blogs" :key="blogs">
-    <h5>{{blogs.title}}</h5>
+    <h5 @click="$router.push(`/detail/${blogs.number}`)">{{blogs.title}}</h5>
     <p>{{ blogs.date }}</p>
 <!--    <p>{{ blogs.content }}</p>-->
 <!--    <p>{{ blogs.number }}</p>-->
@@ -9,12 +9,14 @@
 </template>
 
 <script>
+
 export default {
   name: 'List',
   props: {
     blogs: Array,
   }
 }
+
 </script>
 
 <style>

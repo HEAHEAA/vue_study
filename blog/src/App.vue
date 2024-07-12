@@ -20,7 +20,9 @@
   <router-link to="/list">리스트 페이지</router-link>
 
   <div class="mt-4">
-    <router-view :blogs="blogs"></router-view>
+    <router-view
+        :blogs="blogs"
+    />
   </div>
 
 
@@ -38,6 +40,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style>
