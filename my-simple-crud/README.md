@@ -8,7 +8,6 @@ $ npm install
 $ npm install vuex@next axios 
 ```
 
-### Vuex4 설정
 #### Vuex4 Store 설정
 -  src/store/index.js 파일을 생성하고 아래와 같이 설정
 ```
@@ -309,17 +308,17 @@ const gridItems = ref([
 src/
 |-- store/
 |   |-- modules/
-|   |   |-- store1.js
+|   |   |-- itemListStore.js
 |   |   |-- store2.js
 |   |-- index.js
 |-- main.js
 ```
 
-#### 2. store1.js
+#### 2. itemListStore.js
 ```
-// src/store/modules/store1.js
+// src/store/modules/itemListStore.js
 
-const store1 = {
+const itemListStore = {
     namespaced: true,
     state: () => ({
         
@@ -335,7 +334,7 @@ const store1 = {
     }
 };
 
-export default store1;
+export default itemListStore;
 ```
 
 
@@ -365,12 +364,12 @@ export default store2;
 #### 3. index.js
 ```
 import { createStore } from 'vuex';
-import store1 from './modules/store1';
+import itemListStore from './modules/itemListStore';
 import store2 from './modules/store2';
 
 const store = createStore({
     modules: {
-        store1,
+        itemListStore,
         store2
     }
 });

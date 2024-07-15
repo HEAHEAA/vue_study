@@ -1,32 +1,31 @@
-
 <template>
-  <div id="app">
-<!--        <ItemList/>-->
+  <ListItem/>
 
-    <div>
-      <h1>Store 1 Count: {{ count }}</h1>
-      <button @click="incrementCount">Increment Count</button>
-      <h1>Store 2 Message: {{ message }}</h1>
-      <input v-model="newMessage" @keyup.enter="updateMessage" placeholder="Update message" />
-    </div>
+  <div>
+    <h1>Store 1 Count: {{ count }}</h1>
+    <button @click="incrementCount">Increment Count</button>
+    <h1>Store 2 Message: {{ message }}</h1>
+    <input v-model="newMessage" @keyup.enter="updateMessage" placeholder="Update message" />
   </div>
 </template>
 
 <script setup>
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
+import ListItem from "./components/ListItem.vue";
 
+// 스토어 인스턴스 가져오기
 const store = useStore();
-// Store 1
-const count = computed(() => store.state.store1.count);
-const incrementCount = () => store.dispatch('store1/increment');
 
-// Store 2
-const message = computed(() => store.state.store2.message);
+const count = computed(() => store.getters['store1/count']);
+const message = computed(() => store.getters['store2/message']);
+
+console.log(store.getters['store1/itemList']);
+const incrementCount = () => store.dispatch('store1/increment');
 const newMessage = ref('');
 const updateMessage = () => store.dispatch('store2/updateMessage', newMessage.value);
-</script>
 
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
