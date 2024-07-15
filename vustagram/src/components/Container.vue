@@ -29,12 +29,19 @@
       </div>
     </div>
 
+
+
+    <!-- 글작성페이지 -->
+    <div v-if="step === 3">
+      <MyPage/>
+    </div>
   </div>
 </template>
 
 <script>
 import Post from './Post.vue';
 import FilterBox from './FilterBox.vue';
+import MyPage from './MyPage.vue';
 
 export default {
   name: 'Container',
@@ -48,6 +55,7 @@ export default {
   components: {
     Post: Post,
     FilterBox: FilterBox,
+    MyPage:MyPage
   },
   props: {
     Data: Array,

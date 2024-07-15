@@ -1,4 +1,5 @@
 import {createStore} from "vuex";
+import axios from "axios";
 
 const store = createStore({
     state() {
@@ -6,26 +7,38 @@ const store = createStore({
             name: 'kim',
             age: 20,
             likes: 30,
-            check: false,
+            likeCheck: false,
+            more: {},
         }
     },
     mutations: {
+        setMore(state, data){
+            state.more = data;
+        },
         onchangeName(state) {
             state.name = 'park';
         },
         onchangeAge(state, payload) {
-            state.age+= payload; //방법 1
+            state.age += payload; //방법 1
             // state.age = state.age + 1; //방법2
         },
         onchangeLikes(state) {
-            if(state.check === false){
-                state.likes += 1;
-                state.check = true;
+            if(state.likeCheck === false){
+                state.likes++;
+                state.likeCheck = true;
             }else {
-                state.likes -= 1;
-                state.check = false;
+                state.likes--;
+                state.likeCheck = false;
             }
-        }
+        },
+    },
+    actions: { //ajax 사용할때
+        getData(context){
+          axios.get(`https://codingapple1.github.io/vue/more0.json`)
+              .then((res)=> {
+              context.commit('setMore', res.data);
+          });
+        },
     },
 
 })
