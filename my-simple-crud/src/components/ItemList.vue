@@ -22,6 +22,7 @@
 
 
 
+
   </div>
 </template>
 
@@ -64,6 +65,9 @@ onMounted(fetchItems);
 <style scoped>
 input{
   height: 35px;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
 }
 
 li {

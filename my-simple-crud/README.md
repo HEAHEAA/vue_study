@@ -1,6 +1,6 @@
-# Vue 3 + Vite 
+# Vue + Vite 
 
-### vue3 + vite + 필요 라이브러리 설치
+### vue + vite + 필요 라이브러리 설치
 ```
 $ npm create vite@latest [프로젝트 명] --template vue
 $ cd [프로젝트명]
@@ -8,8 +8,8 @@ $ npm install
 $ npm install vuex@next axios 
 ```
 
-### Vuex 설정
-#### Vuex Store 설정
+### Vuex4 설정
+#### Vuex4 Store 설정
 -  src/store/index.js 파일을 생성하고 아래와 같이 설정
 ```
 import { createStore } from 'vuex';
@@ -29,7 +29,7 @@ export default createStore({
 ```
 
 
-### Vuex Store 적용 
+### Vuex4 Store 적용 
 - src/main.js store적용
 ```
 import { createApp } from 'vue';
@@ -208,4 +208,172 @@ button {
 </style>
 
 
+```
+
+
+* * *
+
+
+### GridStack 사용하는방법
+- components/GridStack.vue 생성
+```
+<template>
+  <div ref="gridstack" class="grid-stack">
+    <div v-for="item in items" :key="item.id" class="grid-stack-item" :gs-x="item.x" :gs-y="item.y" :gs-width="item.width" :gs-height="item.height">
+      <div class="grid-stack-item-content">
+        {{ item.content }}
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<script setup>
+import { GridStack } from 'gridstack';
+import 'gridstack/dist/gridstack.min.css';
+import {onBeforeUnmount, onMounted, ref} from "vue";
+
+const props = defineProps({
+  items: {
+    type: Array,
+    required: true,
+  },
+});
+
+const gridstack = ref(null);
+let grid;
+
+onMounted(()=>{
+  grid = GridStack.init({
+    float: true,
+    resizable: {
+      handles: 'se, sw'
+    }
+  }, gridstack.value);
+});
+
+onBeforeUnmount(()=>{
+  if(grid){
+    grid.destroy(false);
+  }
+})
+
+</script>
+
+<style>
+.grid-stack-item-content {
+  background-color: lightgrey;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+
+```
+
+### App.vue
+- 그리드스택 설정
+```
+<script setup>
+import ItemList from "./components/ItemList.vue";
+import GridStack from "./components/Gridstack.vue";
+import {ref} from "vue";
+
+const gridItems = ref([
+  { id: 1, x: 0, y: 0, width: 2, height: 2, content: 'Item 1' },
+  { id: 2, x: 2, y: 0, width: 20, height: 2, content: 'Item 2' },
+  { id: 3, x: 4, y: 0, width: 2, height: 2, content: 'Item 3' },
+])
+</script>
+
+<template>
+  <div id="app">
+    <ItemList/>
+    <GridStack :items="gridItems"/>
+  </div>
+</template>
+
+<style>
+
+</style>
+
+```
+
+* * *
+
+### Vuex4 에서 store 여러개로 관리하기 
+
+#### 1. 폴더 구조
+```
+src/
+|-- store/
+|   |-- modules/
+|   |   |-- store1.js
+|   |   |-- store2.js
+|   |-- index.js
+|-- main.js
+```
+
+#### 2. store1.js
+```
+// src/store/modules/store1.js
+
+const store1 = {
+    namespaced: true,
+    state: () => ({
+        
+    }),
+    mutations: {
+      
+    },
+    actions: {
+        
+    },
+    getters: {
+  
+    }
+};
+
+export default store1;
+```
+
+
+#### 2. store2.js
+```
+// src/store/modules/store2.js
+
+const store2 = {
+    namespaced: true,
+    state: () => ({
+        
+    }),
+    mutations: {
+      
+    },
+    actions: {
+        
+    },
+    getters: {
+  
+    }
+};
+
+export default store2;
+```
+
+#### 3. index.js
+```
+import { createStore } from 'vuex';
+import store1 from './modules/store1';
+import store2 from './modules/store2';
+
+const store = createStore({
+    modules: {
+        store1,
+        store2
+    }
+});
+
+export default store;
 ```
