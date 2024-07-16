@@ -800,3 +800,23 @@ const store = createStore({
 export default store;
 ```
 
+
+
+* * *
+## yarn 사용방법
+
+#### vue3 + vite + yarn
+```
+$ cd [프로젝트 명]
+$ yarn
+```
+
+#### yarn 실행
+```
+$ yarn dev
+```
+
+#### yarn 배포 방법
+```
+$ yarn build
+```
