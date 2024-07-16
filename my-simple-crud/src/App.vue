@@ -1,12 +1,13 @@
 <template>
   <ListItem/>
 
-  <div>
-    <h1>Store 1 Count: {{ count }}</h1>
-    <button @click="incrementCount">Increment Count</button>
-    <h1>Store 2 Message: {{ message }}</h1>
-    <input v-model="newMessage" @keyup.enter="updateMessage" placeholder="Update message" />
-  </div>
+  <hr/>
+<!--  <div>-->
+<!--    <h1>Store 1 Count: {{ count }}</h1>-->
+<!--    <button @click="incrementCount">Increment Count</button>-->
+<!--    <h1>Store 2 Message: {{ message }}</h1>-->
+<!--    <input v-model="newMessage" @keyup.enter="updateMessage" placeholder="Update message" />-->
+<!--  </div>-->
 </template>
 
 <script setup>

@@ -18,7 +18,6 @@
       <button @click="deleteItem(item.id)">Delete</button>
     </li>
   </ul>
-
 </template>
 
 <script setup>
@@ -36,12 +35,12 @@ const fetchItems = () => store.dispatch('ItemStore/fetchItems');
 const newItem = ref({name: ''});
 
 const addItem = async () => {
-  await store.dispatch('itemStore/addItem', newItem.value);
+  await store.dispatch('ItemStore/addItem', newItem.value);
   newItem.value.name = '';
 }
 
 //3.아이템 삭제
-const deleteItem = (id) => store.dispatch('itemStore/deleteItem', id);
+const deleteItem = (id) => store.dispatch('ItemStore/deleteItem', id);
 
 //4. 아이템 수정
 const currentItem = ref(null);
@@ -49,7 +48,7 @@ const editItem = (item) => {
   currentItem.value = {...item};
 }
 const updateItem = async () => {
-  await store.dispatch('itemStore/updateItem', currentItem.value);
+  await store.dispatch('ItemStore/updateItem', currentItem.value);
   currentItem.value = null;
 }
 
