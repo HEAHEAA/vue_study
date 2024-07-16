@@ -820,3 +820,17 @@ $ yarn dev
 ```
 $ yarn build
 ```
+* * *
+
+## vuetify 프로젝트 생성 사용법
+#### 해당 라이브러리는 vite도 함께사용
+```
+$ yarn create vuetify --뷰티파이생성
+    ▶ Project name : [프로젝트 명]
+    ▶ Which preset would you like to install : (enter)
+    ▶ Use TypeScript : no
+    ▶  Would you like to install dependencies with yarn, npm, pnpm, or bun? yarn
+    ▶  Install Dependencies? yes
+```
+
+
