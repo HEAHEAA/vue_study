@@ -5,6 +5,7 @@
  */
 
 // Styles
+import 'gridstack/dist/gridstack.min.css';
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
