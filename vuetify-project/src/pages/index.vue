@@ -7,20 +7,23 @@
 </template>
 
 <script setup>
- import {useCounterStore} from "@/store/counter";
  import {storeToRefs} from "pinia";
- import {useUserStore} from "@/store/user";
- const store = useCounterStore();
- const user = useUserStore();
+ import {useStoreMain} from "@/store/storeMain";
 
- const {count} = storeToRefs(store);
- const {name} = storeToRefs(user);
- const {increment} = store
- const {setName} = user;
+ const mainStore = useStoreMain();
+ const {countStore,userStore} = mainStore;
+
+ const {count} = storeToRefs(countStore);
+ const {name} = storeToRefs(userStore);
+ const {increment} = countStore
+ const {setName} = userStore;
 
  const changeName = () => {
-   setName('지희');
+   setName('wlgml');
  }
+
+
+
 
 </script>
 <style>
