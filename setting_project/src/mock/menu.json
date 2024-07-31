@@ -1,0 +1,201 @@
+[
+  {
+    "id": "1",
+    "type": "group",
+    "text": "스마트 정류장",
+    "url": null,
+    "icon": "mdi-bus-marker",
+    "children": [
+      {
+        "id": "2",
+        "type": "page",
+        "text": "모니터링",
+        "url": "/station/monitoring",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "3",
+        "type": "page",
+        "text": "제어관리",
+        "url": "/station/control",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "4",
+        "type": "page",
+        "text": "시설물관리",
+        "url": "/station/facility",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "5",
+        "type": "page",
+        "text": "시설물이력",
+        "url": "/station/record",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "6",
+        "type": "page",
+        "text": "DID 관리",
+        "url": "/station/did",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "7",
+        "type": "page",
+        "text": "설문조사관리",
+        "url": "/station/survey",
+        "icon": null,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "8",
+    "type": "group",
+    "text": "스마트 횡단보도",
+    "url": null,
+    "icon": "mdi-road-variant",
+    "children": [
+      {
+        "id": "9",
+        "type": "page",
+        "text": "횡단보도 모니터링",
+        "url": "/crosswalk/monitoring",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "10",
+        "type": "page",
+        "text": "횡단보도 통계",
+        "url": "/crosswalk/total",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "11",
+        "type": "page",
+        "text": "횡단보도 시설물관리",
+        "url": "/crosswalk/facility",
+        "icon": null,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "12",
+    "type": "group",
+    "text": "스마트 그늘막",
+    "url": null,
+    "icon": "mdi-awning-outline",
+    "children": [
+      {
+        "id": "13",
+        "type": "page",
+        "text": "스마트그늘막 모니터링",
+        "url": "/shade/monitoring",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "14",
+        "type": "page",
+        "text": "그늘막 시설물관리",
+        "url": "/shade/facility",
+        "icon": null,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "15",
+    "type": "group",
+    "text": "스마트보안등",
+    "url": null,
+    "icon": "mdi-post-lamp",
+    "children": [
+      {
+        "id": "16",
+        "type": "page",
+        "text": "스마트보안등 모니터링",
+        "url": "/security/monitoring",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "17",
+        "type": "page",
+        "text": "보안등 시설물관리",
+        "url": "/security/facility",
+        "icon": null,
+        "children": null
+      }
+    ]
+  },
+
+  {
+    "id": "18",
+    "type": "group",
+    "text": "태양광벽부등",
+    "url": null,
+    "icon": "mdi-solar-power",
+    "children": [
+      {
+        "id": "19",
+        "type": "page",
+        "text": "태양광벽부등 모니터링",
+        "url": "/solar/monitoring",
+        "icon": null,
+        "children": null
+      },
+      {
+        "id": "20",
+        "type": "page",
+        "text": "태양광벽부등 시설물관리",
+        "url": "/solar/facility",
+        "icon": null,
+        "children": null
+      }
+    ]
+  },
+  {
+    "id": "21",
+    "type": "page",
+    "text": "사용자관리",
+    "url": "/users",
+    "icon": "mdi-account-circle",
+    "children": null
+  },
+  {
+    "id": "22",
+    "type": "group",
+    "text": "KPI",
+    "url": "",
+    "icon": "mdi-access-point-network",
+    "children": [
+      {
+        "id": "23",
+        "type": "page",
+        "text": "KPI 통계",
+        "url": "/kpi/total",
+        "icon": "",
+        "children": null
+      },
+      {
+        "id": "24",
+        "type": "page",
+        "text": "KPI 관리",
+        "url": "/kpi/manage",
+        "icon": null,
+        "children": null
+      }
+    ]
+  }
+]
