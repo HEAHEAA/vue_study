@@ -16,6 +16,27 @@ const {increment} = store
 //초기값 설정해줌
 store.$counterDefault();
 
+import {onBeforeUpdate, onMounted, onUnmounted, onUpdated} from "vue";
+
+
+
+
+onMounted(()=>{
+  console.log("onMounted");
+});
+
+onUnmounted(()=>{
+  console.log("onUnmounted");
+})
+
+onBeforeUpdate(()=>{
+  console.log("onBeforeUpdate");
+})
+
+onUpdated(()=>{
+  console.log("onUpdated");
+})
+
 </script>
 
 <style scoped>
