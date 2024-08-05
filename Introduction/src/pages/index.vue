@@ -6,7 +6,8 @@
     <ToggleTransition/> <br/>
 
     <!-- 동적 컴포넌트장에서 컴포넌트 엘리먼트로 사용하기-->
-    <component :is="InputSelect"/>
+<!--    <component :is="InputSelect"/>-->
+
   </v-container>
 
 
@@ -25,5 +26,7 @@ const handleCount = () => {
   counts.value ++;
 }
 provide('handle', {counts,handleCount});
+
+
 
 </script>
